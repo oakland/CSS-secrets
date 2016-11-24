@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1-gradient</title>
+	<style type="text/css">
+		div.box1 {
+			width: 100%;
+			height: 100px;
+			background: orange; /*in case for fallback*/
+			background: linear-gradient(45deg, yellow 90%, red)
+		}
+
+		div.box2 {
+			width: 100%;
+			height: 100px;
+			background: orange; /*in case for fallback*/
+			background: radial-gradient(yellow, red)
+		}
+
+		/*===== 参考 =====*/
+
+		/*
+			https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients
+			https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient
+			https://css-tricks.com/css3-gradients/
+			http://www.css3factory.com/linear-gradients/，可以直接生成代码
+		*/
+
+		/*====== 扩展阅读 ======*/
+		/*
+			了解 Moderizr (modernizr.com)
+
+		*/
+
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			var box = document.getElementsByTagName('div')[0];
+			console.log(box.classList);
+		}
+	</script>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+</body>
+</html>
