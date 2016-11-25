@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2-multipleBorders</title>
+	<style type="text/css">
+		/*
+		1. box-shadow 解决方案
+		box-shadow 除了可以用于创建阴影之外，还可以接受第四个参数——spread radius——用于将阴影扩大或者缩小（参数为负的时候）。0 偏移，0 模糊的时候，参数为正数的 spread radius 可以创建一个类似实心 border 的阴影。通过将 box-shadow 用逗号隔开，我们可以创建多个 shadow，进而实现多个边界的效果。
+		需要注意的是，box-shadow 是一层一层叠加和覆盖的，所以要想让新的阴影效果能展示出来，必须要计算新阴影的 spread radius 比上一个 spread radius 大多少，进而来书写代码。例如 div.box-shadow2 中，第二个 spread radius 是 15px，但是因为前一个是 10px，所以第二个漏出来的部分只有 5px，这个是要计算的。
+		通过 box-shadow 实现多边界在大多数情况下都是可行的，但是要注意下面几点：
+		1. shadow 不像 border， shadow 不占用宽度，就是手它不会影响布局，但是你可以通过 margin 或者 padding 来模拟边界占用的空间（应该用 margin 还是 padding，取决于 shadow 是否是 inset 的效果）。
+		2. 我们通过 box-shadow 模拟假的元素 border，无法捕获鼠标事件，例如 hover 和 click 在这些假的边界上的鼠标事件是无法被捕获的，如果这些鼠标事件对你而言很重要的话，你最好通过 inset 关键词将 box-shadow 放在元素的内部，同时你需要额外添加 padding 来填充这些空间。
+		*/
+
+		div {
+			width: 90px;
+			height: 90px;
+			margin: 30px;
+		}
+
+		div.box-shadow1 {
+			background: yellowgreen;
+			box-shadow: 0 0 0 10px #655;
+		}
+
+		div.box-shadow2 {
+			background: yellowgreen;
+			box-shadow: 0 0 0 10px #655, 0 0 0 15px deeppink;
+		}
+
+		div.box-shadow3 {
+			background: yellowgreen;
+			box-shadow: 0 0 0 10px #655, 0 0 0 15px deeppink, 0 2px 5px 15px rgba(0,0,0,.6);
+		}
+
+		div.box-shadow-inset1 {
+			background: yellowgreen;
+			box-shadow: 0 0 0 10px #655 inset, 0 0 0 15px deeppink inset;
+		}
+
+		div.box-shadow-inset2 {
+			background: yellowgreen;
+			box-shadow: 0 0 0 10px #655 inset, 0 0 0 15px deeppink inset;
+			padding: 15px;
+		}
+
+		div.box-shadow-inset3 {
+			background: yellowgreen;
+			box-shadow: 0 0 0 10px #655 inset, 0 0 0 15px deeppink inset, 0 2px 5px 15px rgba(0, 0, 0, .6) inset;
+			padding: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box-shadow1">box-shadow1</div>
+	<hr>
+	<div class="box-shadow2">box-shadow2</div>
+	<hr>
+	<div class="box-shadow3">box-shadow3</div>
+	<hr>
+	<div class="box-shadow-inset1">box-shadow-inset1</div>
+	<hr>
+	<div class="box-shadow-inset2">box-shadow-inset2</div>
+	<hr>
+	<div class="box-shadow-inset3">box-shadow-inset3</div>
+</body>
+</html>
