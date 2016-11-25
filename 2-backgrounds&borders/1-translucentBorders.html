@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1-translucentBorders</title>
+	<style type="text/css">
+		/*
+		通过 rgba() 和 hsla() 这两种颜色表示的方式，可以实现颜色透明的效果。
+		http://www.24way.org 是一个非常不错的 CSS 相关的网站。
+		默认情况下，background 的边界会扩展到 border 的最外边，如 div.background-default 所示。
+
+		在 CSS3 中新增加了一个 background-clip 的属性，这个属性的默认值是 border-box，我们还可以设置这个属性值为 padding-box，或者 content-box 来实现 background 在不同的位置被裁切。
+		*/
+
+		body {
+			background: url(images/stock-photo-86061397.jpg);
+		}
+
+		div.background-default {
+			/*默认情况下为 background-clip: border-box;*/
+			background: orange;
+			border: 10px dotted blue;
+		}
+
+		div.background-clip-paddingBox {
+			background: orange;
+			border: 10px dotted blue;
+			background-clip: padding-box;
+		}
+
+		div.background-clip-contentBox {
+			background: orange;
+			border: 10px dotted blue;
+			padding: 10px;
+			background-clip: content-box;
+		}
+
+		div.demo {
+			width: 300px;
+			height: 90px;
+			background: #fff;
+			margin: 150px auto;
+			text-align: center;
+			line-height: 90px;
+			color: #ff9800;
+			/*以上代码为装饰性代码，统一使用 ****** 分割*/
+			border: 30px solid rgba(73, 196, 210, 0.51);
+			background-clip: padding-box;
+		}
+	</style>
+</head>
+<body>
+	<div class="background-default">background-default</div>
+	<hr>
+	<div class="background-clip-paddingBox">background-clip-paddingBox</div>
+	<hr>
+	<div class="background-clip-contentBox">background-clip-contentBox</div>
+	<hr>
+	<div class="demo">This is a demo</div>
+</body>
+</html>
