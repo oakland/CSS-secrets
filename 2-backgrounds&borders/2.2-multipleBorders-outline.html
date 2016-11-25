@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2.2-multipleBorders-outlineSolution</title>
+	<style type="text/css">
+		/*
+		如果我们只需要两个边界而不是更多的话，我们可以使用 border 和 outline 属性来实现。使用 outline 也给我们实现虚线方式的边界提供了方便，而是用 box-shadow 的话只能模拟实心的边界。
+		使用 outline 的另外一个好处是，你可以通过 outline-offset 这个属性来控制 outline 和 border 之间的距离。
+		但是这种解决方案也有其限制：
+		1. 只能用在两条边界的情况下。
+		2. outline 不会跟随 border 实现 radius 的效果。如 div.outline3 所示。这个目前被标记为 bug，未来 W3C 应该会修正这个bug。
+		3. 
+		*/
+
+		div {
+			width: 90px;
+			height: 90px;
+			margin: 30px;
+		}
+
+		div.outline1 {
+			background: yellowgreen;
+			border: 10px solid #655;
+			outline: 5px solid deeppink; /*注意，这里是 5px 而不是 15px，因为 outline 是以 border 最外边为起始绘制的*/
+		}
+
+		div.outline2 {
+			background: yellowgreen;
+			outline: 2px dashed #fff;
+			outline-offset: -30px;
+			border-radius: 10px;
+			border: 10px solid #655;
+		}
+
+		div.outline3 {
+			background: yellowgreen;
+			border: 10px solid #655;
+			border-radius: 20px;
+			outline: 2px solid deeppink;
+		}
+	</style>
+</head>
+<body>
+	<div class="outline1">outline1</div>
+	<hr>
+	<div class="outline2">outline2</div>
+	<hr>
+	<div class="outline3">outline3</div>
+</body>
+</html>
