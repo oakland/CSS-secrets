@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3.2-backgroundPosition-calc</title>
+	<style type="text/css">
+		/*我们要实现的效果是背景图片从底部向上偏移 10px，从最右侧向左偏移 40px，那么我们实际要实现的效果是水平方向上偏移 100% - 40px，而垂直方向上偏移 100% - 10px。calc() 函数可以帮助我们实现这样的计算方式，尤其是 background-position 属性*/
+
+		div {
+			width: 200px;
+			height: 200px;
+		}
+
+		div.backgroundPositionCalc {
+			background: url(images/apple_35.267904509284px_1200811_easyicon.net.png) no-repeat #58a;
+			background-position: calc(100% - 40px) calc(100% - 10px);
+		}
+
+		/*关于 CSS 中的 calc() 函数*/
+		/*首先，为了让 calc() 函数可以实现兼容，函数内部的表达式中 - 或者 + 前后必须都要有空格，例如，上面的表达式不能写成 calc(100%-10px) 这样的格式，*/
+		/*其次， calc() 函数目前还是一个实验性质的技术，还没有投入正式的生产，所以规范并没有定下来。具体的可以参考：
+		https://developer.mozilla.org/en-US/docs/Web/CSS/calc
+		*/
+	</style>
+</head>
+<body>
+	<div class="backgroundPositionCalc">backgroundPositionCalc</div>
+</body>
+</html>
