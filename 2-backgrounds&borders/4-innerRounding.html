@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>4-innerRounding</title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+		}
+
+		hr {
+			margin: 30px auto;
+		}
+
+		/*有时候我们需要一个这样的效果，就是外边是正常的直角长方形，而里面是一个圆角的长方形。如何实现呢？通常情况下，我们需要创建两个元素，外部元素包裹内部元素，然后通过给外部元素设置 paddind，而给内部元素设置 border-radius 来实现。*/
+
+		/*实现方式一*/
+		div.out {
+			background: #655;
+			padding: .8em;
+		}
+
+		div.out > div {
+			background: tan;
+			border-radius: .8em;
+		}
+
+		/*
+		上面的方法可以是不错的，我们可以充分利用背景效果，因为我们可以利用背景效果让 “边界” 看起来非常复杂。
+		但是假如我们只想实现一个实心的纯色效果边界呢？应该如何使用一个元素来实现上述的效果呢？
+		见下面的代码
+		*/
+		/*实现方式二*/
+		div.innerRounding {
+			background: tan;
+			border-radius: .8em;
+			outline: .8em solid #655;
+			box-shadow: 0 0 0 .6em #655;
+		}
+		/*
+		我们利用了 outline 不会跟随边界而 box-shadow 会跟随边界的特点，实现了这个效果。但是这个效果其实对于 border-radius 和 outline 的宽度有限制的，当 border-radius 达到某个值的时候，无论如何 box-shadow 也无法填补 border-radius 和 outline 之间的空白，没有太仔细看这块的推理，大家可以自己去看书，说的比较详细，推理其实也很简单。
+		*/
+
+		div.outline {
+			background: tan;
+			border-radius: 1em;
+			outline: .8em solid #655;
+		}
+
+		div.boxshadow {
+			background: tan;
+			border-radius: 1em;
+			box-shadow: 0 0 0 0.6em #655;
+		}
+	</style>
+</head>
+<body>
+	<div class="out">
+		<div>Nomal situation</div>
+	</div>
+	<hr>
+	<div class="innerRounding">innerRounding</div>
+	<hr>
+	<div class="outline">outline don't follow border</div>
+	<hr>
+	<div class="boxshadow">box-shadow follow border</div>
+</body>
+</html>
